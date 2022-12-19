@@ -4,7 +4,10 @@ const morgan = require('morgan')
 const handlebars = require('express-handlebars')
 // import express from 'express';
 const app = express()
-const port = 3000
+const port = 3005
+
+//static file //file tài nguyên css, img,..
+app.use(express.static(path.join(__dirname, 'public')))
 
 //HTTP logger
 app.use(morgan('combined'))
