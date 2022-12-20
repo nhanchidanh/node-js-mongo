@@ -8,6 +8,10 @@ const port = 3005
 
 //vì bên kìa là hàm index() nên kh cần viết rõ ra tên hàm
 const route = require('./routes')
+const db = require('./config/db');
+
+//COnnect to DB
+db.connect();
 
 //static file //file tài nguyên css, img,..
 app.use(express.static(path.join(__dirname, 'public')))
@@ -29,14 +33,14 @@ app.engine('hbs', handlebars.engine(
   }
 ))
 app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname,'/resources/views'))
+app.set('views', path.join(__dirname,'resources','views'))
+
 
 //routr init khởi tạo tuyến đường
 route(app);
 
 
-
 //127.0.0.1
 app.listen(port, () => {
-  console.log(`Example app listening on port http://localhost:${port}`)
+  console.log(`App listening on port http://localhost:${port}`)
 })
